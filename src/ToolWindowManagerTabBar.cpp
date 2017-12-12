@@ -371,7 +371,7 @@ void ToolWindowManagerTabBar::tabRemoved(int) {
 }
 
 void ToolWindowManagerTabBar::updateClosable() {
-  QTabBar::setTabsClosable(m_tabsClosable && count() > 1);
+  QTabBar::setTabsClosable(m_tabsClosable && !useMinimalBar());
 }
 
 bool ToolWindowManagerTabBar::floatingWindowChild() const {
