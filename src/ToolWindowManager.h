@@ -223,6 +223,8 @@ public:
    */
   void removeToolWindow(QWidget* toolWindow);
 
+  bool isFloating(QWidget* toolWindow);
+
   /*!
    * \brief Returns all tool window added to the manager.
    */

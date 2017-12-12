@@ -386,6 +386,14 @@ void ToolWindowManager::removeToolWindow(QWidget *toolWindow) {
   delete toolWindow;
 }
 
+bool ToolWindowManager::isFloating(QWidget* toolWindow) {
+    ToolWindowManagerWrapper *wrapper = wrapperOf(toolWindow);
+    if (wrapper) {
+        return wrapper->floating();
+    }
+    return false;
+}
+
 ToolWindowManager* ToolWindowManager::managerOf(QWidget* toolWindow) {
   if (!toolWindow) {
     qWarning("NULL tool window");
