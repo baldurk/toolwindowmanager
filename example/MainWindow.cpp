@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     actions << action;
     toolWindows << b1;
   }
-  ToolWindowManager::ToolWindowProperty properties = ToolWindowManager::ToolWindowProperty(0);
+  ToolWindowManager::ToolWindowProperty properties = ToolWindowManager::HideOnClose;
   ui->toolWindowManager->addToolWindow(toolWindows[0], ToolWindowManager::EmptySpace, properties);
   ui->toolWindowManager->addToolWindow(toolWindows[1], ToolWindowManager::LastUsedArea, properties);
   ui->toolWindowManager->addToolWindow(toolWindows[2], ToolWindowManager::LastUsedArea, properties);
