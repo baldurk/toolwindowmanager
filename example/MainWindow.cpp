@@ -61,15 +61,6 @@ MainWindow::MainWindow(QWidget *parent) :
       ToolWindowManager::AreaReference(ToolWindowManager::TopOf,
                                        ui->toolWindowManager->areaOf(toolWindows[4])));
 
-#if 0
-  ui->toolWindowManager->setToolWindowProperties(toolWindows[0], ToolWindowManager::AlwaysDisplayFullTabs);
-  ui->toolWindowManager->setToolWindowProperties(toolWindows[1], ToolWindowManager::AlwaysDisplayFullTabs);
-  ui->toolWindowManager->setToolWindowProperties(toolWindows[2], ToolWindowManager::AlwaysDisplayFullTabs);
-  ui->toolWindowManager->setToolWindowProperties(toolWindows[3], ToolWindowManager::AlwaysDisplayFullTabs);
-  ui->toolWindowManager->setToolWindowProperties(toolWindows[4], ToolWindowManager::AlwaysDisplayFullTabs);
-  ui->toolWindowManager->setToolWindowProperties(toolWindows[5], ToolWindowManager::AlwaysDisplayFullTabs);
-#endif
-
   resize(600, 400);
   on_actionRestoreState_triggered();
 }

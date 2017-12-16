@@ -152,7 +152,7 @@ void ToolWindowManager::addToolWindows(QList<QWidget *> toolWindows, const ToolW
     toolWindow->setParent(0);
     m_toolWindows << toolWindow;
     m_toolWindowProperties[toolWindow] = properties;
-    QObject::connect(toolWindow, &QWidget::windowTitleChanged, this, &ToolWindowManager::windowTitleChanged);    
+    QObject::connect(toolWindow, &QWidget::windowTitleChanged, this, &ToolWindowManager::windowTitleChanged);
   }
   moveToolWindows(toolWindows, area);
 }
