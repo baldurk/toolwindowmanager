@@ -100,7 +100,7 @@ void ToolWindowManagerArea::updateToolWindow(QWidget* toolWindow) {
       tb->setTabsClosable(false);
       showCloseButton(tabBar(), index, false);
     } else {
-      tb->setTabsClosable(!tb->useMinimalBar());
+      tb->setTabsClosable(true);
       showCloseButton(tabBar(), index, true);
     }
     tabBar()->setTabText(index, toolWindow->windowTitle());
