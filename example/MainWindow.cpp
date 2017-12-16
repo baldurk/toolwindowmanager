@@ -50,17 +50,25 @@ MainWindow::MainWindow(QWidget *parent) :
     actions << action;
     toolWindows << b1;
   }
-  ToolWindowManager::ToolWindowProperty properties = ToolWindowManager::HideOnClose;
-  ui->toolWindowManager->addToolWindow(toolWindows[0], ToolWindowManager::EmptySpace, properties);
-  ui->toolWindowManager->addToolWindow(toolWindows[1], ToolWindowManager::LastUsedArea, properties);
-  ui->toolWindowManager->addToolWindow(toolWindows[2], ToolWindowManager::LastUsedArea, properties);
+  ui->toolWindowManager->addToolWindow(toolWindows[0], ToolWindowManager::EmptySpace);
+  ui->toolWindowManager->addToolWindow(toolWindows[1], ToolWindowManager::LastUsedArea);
+  ui->toolWindowManager->addToolWindow(toolWindows[2], ToolWindowManager::LastUsedArea);
   ui->toolWindowManager->addToolWindow(toolWindows[3],
       ToolWindowManager::AreaReference(ToolWindowManager::LeftOf,
-                                       ui->toolWindowManager->areaOf(toolWindows[2])), properties);
-  ui->toolWindowManager->addToolWindow(toolWindows[4], ToolWindowManager::LastUsedArea, properties);
+                                       ui->toolWindowManager->areaOf(toolWindows[2])));
+  ui->toolWindowManager->addToolWindow(toolWindows[4], ToolWindowManager::LastUsedArea);
   ui->toolWindowManager->addToolWindow(toolWindows[5],
       ToolWindowManager::AreaReference(ToolWindowManager::TopOf,
-                                       ui->toolWindowManager->areaOf(toolWindows[4])), properties);
+                                       ui->toolWindowManager->areaOf(toolWindows[4])));
+
+#if 0
+  ui->toolWindowManager->setToolWindowProperties(toolWindows[0], ToolWindowManager::AlwaysDisplayFullTabs);
+  ui->toolWindowManager->setToolWindowProperties(toolWindows[1], ToolWindowManager::AlwaysDisplayFullTabs);
+  ui->toolWindowManager->setToolWindowProperties(toolWindows[2], ToolWindowManager::AlwaysDisplayFullTabs);
+  ui->toolWindowManager->setToolWindowProperties(toolWindows[3], ToolWindowManager::AlwaysDisplayFullTabs);
+  ui->toolWindowManager->setToolWindowProperties(toolWindows[4], ToolWindowManager::AlwaysDisplayFullTabs);
+  ui->toolWindowManager->setToolWindowProperties(toolWindows[5], ToolWindowManager::AlwaysDisplayFullTabs);
+#endif
 
   resize(600, 400);
   on_actionRestoreState_triggered();
