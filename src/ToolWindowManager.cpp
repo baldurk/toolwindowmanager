@@ -162,7 +162,7 @@ void ToolWindowManager::addToolWindows(QList<QWidget *> toolWindows,
     }
     if(m_toolWindows.contains(toolWindow))
     {
-      qWarning("this tool window has already been added");
+      qWarning() << "this tool window has already been added" << toolWindow->objectName();
       continue;
     }
     toolWindow->hide();
@@ -198,7 +198,7 @@ void ToolWindowManager::moveToolWindows(QList<QWidget *> toolWindows,
   {
     if(!m_toolWindows.contains(toolWindow))
     {
-      qWarning("unknown tool window");
+      qWarning() << "unknown tool window:" << (toolWindow ? toolWindow->objectName() : QString());
       return;
     }
     ToolWindowManagerWrapper *oldWrapper = wrapperOf(toolWindow);
@@ -474,7 +474,7 @@ void ToolWindowManager::removeToolWindow(QWidget *toolWindow, bool allowCloseAlr
 {
   if(!m_toolWindows.contains(toolWindow))
   {
-    qWarning("unknown tool window");
+    qWarning() << "unknown tool window:" << (toolWindow ? toolWindow->objectName() : QString());
     return;
   }
 
@@ -483,7 +483,8 @@ void ToolWindowManager::removeToolWindow(QWidget *toolWindow, bool allowCloseAlr
 
   if(!manager)
   {
-    qWarning("unknown tool window");
+    qWarning() << "window not child of any tool window"
+               << (toolWindow ? toolWindow->objectName() : QString());
     return;
   }
 
@@ -537,7 +538,7 @@ void ToolWindowManager::closeToolWindow(QWidget *toolWindow)
     return;
   }
 
-  qWarning("window not child of any tool window");
+  qWarning() << "window not child of any tool window" << toolWindow->objectName();
 }
 
 void ToolWindowManager::raiseToolWindow(QWidget *toolWindow)
@@ -559,7 +560,7 @@ void ToolWindowManager::raiseToolWindow(QWidget *toolWindow)
   if(area)
     area->setCurrentWidget(toolWindow);
   else
-    qWarning("parent is not a tool window area");
+    qWarning() << "parent is not a tool window area" << toolWindow->objectName();
 }
 
 QWidget *ToolWindowManager::createToolWindow(const QString &objectName)
@@ -681,7 +682,8 @@ void ToolWindowManager::releaseToolWindow(QWidget *toolWindow)
   ToolWindowManagerArea *previousTabWidget = findClosestParent<ToolWindowManagerArea *>(toolWindow);
   if(!previousTabWidget)
   {
-    qWarning("cannot find tab widget for tool window");
+    qWarning() << "cannot find tab widget for tool window:"
+               << (toolWindow ? toolWindow->objectName() : QString());
     return;
   }
   previousTabWidget->removeTab(previousTabWidget->indexOf(toolWindow));
@@ -1466,7 +1468,7 @@ bool ToolWindowManager::allowClose(QWidget *toolWindow)
 {
   if(!m_toolWindows.contains(toolWindow))
   {
-    qWarning("unknown tool window");
+    qWarning() << "unknown tool window:" << (toolWindow ? toolWindow->objectName() : QString());
     return true;
   }
   int methodIndex = toolWindow->metaObject()->indexOfMethod(
