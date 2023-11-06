@@ -494,6 +494,11 @@ void ToolWindowManager::removeToolWindow(QWidget *toolWindow, bool allowCloseAlr
       return;
   }
 
+  forceCloseToolWindow(toolWindow);
+}
+
+void ToolWindowManager::forceCloseToolWindow(QWidget *toolWindow)
+{
   moveToolWindow(toolWindow, NoArea);
   m_toolWindows.removeOne(toolWindow);
   m_toolWindowProperties.remove(toolWindow);
