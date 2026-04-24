@@ -68,6 +68,11 @@ public:
    */
   void updateToolWindow(QWidget *toolWindow);
 
+  /*!
+   * Callback when a tab is closing, after manager has checked that it is allowed.
+   */
+  void tabClosing(int index);
+
 protected:
   //! Reimplemented from QTabWidget::mouseMoveEvent.
   virtual void mouseMoveEvent(QMouseEvent *);
@@ -116,7 +121,6 @@ private:
 private slots:
   void tabMoved(int from, int to);
   void tabSelected(int index);
-  void tabClosing(int index);
 };
 
 #endif    // TOOLWINDOWMANAGERAREA_H
