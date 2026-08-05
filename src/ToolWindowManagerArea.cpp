@@ -81,6 +81,7 @@ void ToolWindowManagerArea::addToolWindows(const QList<QWidget *> &toolWindows, 
   foreach(QWidget *toolWindow, toolWindows)
   {
     index = insertTab(insertIndex, toolWindow, toolWindow->windowIcon(), toolWindow->windowTitle());
+    tabBar()->setTabToolTip(index, toolWindow->windowTitle());
     insertIndex = index + 1;
   }
   setCurrentIndex(index);
@@ -112,6 +113,7 @@ void ToolWindowManagerArea::updateToolWindow(QWidget *toolWindow)
     else
       showCloseButton(tabBar(), index, true);
     tabBar()->setTabText(index, toolWindow->windowTitle());
+    tabBar()->setTabToolTip(index, toolWindow->windowTitle());
   }
 }
 
